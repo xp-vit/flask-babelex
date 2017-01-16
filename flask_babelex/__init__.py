@@ -531,7 +531,10 @@ class Domain(object):
             gettext(u'Hello %(name)s!', name='World')
         """
         t = self.get_translations()
-        return t.ugettext(string) % variables
+        if variables:
+            return t.ugettext(string) % variables
+        else:
+            return t.ugettext(string)
 
     def ngettext(self, singular, plural, num, **variables):
         """Translates a string with the current locale and passes in the
