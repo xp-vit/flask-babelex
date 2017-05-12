@@ -1,7 +1,7 @@
 Flask-BabelEx
 =============
 
-.. module:: flask.ext.babelex
+.. module:: flask_babelex
 
 Flask-BabelEx is an extension to `Flask`_ that adds i18n and l10n support to
 any Flask application with the help of `babel`_, `pytz`_ and
@@ -31,7 +31,7 @@ To get started all you need to do is to instanciate a :class:`Babel`
 object after configuring the application::
 
     from flask import Flask
-    from flask.ext.babelex import Babel
+    from flask_babelex import Babel
 
     app = Flask(__name__)
     app.config.from_pyfile('mysettings.cfg')
@@ -106,7 +106,7 @@ To play with the date formatting from the console, you can use the
 
 Here some examples:
 
->>> from flask.ext.babelex import format_datetime
+>>> from flask_babelex import format_datetime
 >>> from datetime import datetime
 >>> format_datetime(datetime(1987, 3, 5, 17, 12))
 u'Mar 5, 1987 5:12:00 PM'
@@ -122,7 +122,7 @@ u'05 12 1987'
 And again with a different language:
 
 >>> app.config['BABEL_DEFAULT_LOCALE'] = 'de'
->>> from flask.ext.babelex import refresh; refresh()
+>>> from flask_babelex import refresh; refresh()
 >>> format_datetime(datetime(1987, 3, 5, 17, 12), 'EEEE, d. MMMM yyyy H:mm')
 u'Donnerstag, 5. M\xe4rz 1987 17:12'
 
@@ -142,7 +142,7 @@ There are two functions responsible for translating: :func:`gettext` and
 :func:`ngettext`.  The first to translate singular strings and the second
 to translate strings that might become plural.  Here some examples::
 
-    from flask.ext.babelex import gettext, ngettext
+    from flask_babelex import gettext, ngettext
 
     gettext(u'A simple string')
     gettext(u'Value: %(value)s', value=42)
@@ -153,7 +153,7 @@ application and define them outside of a request, you can use a lazy
 strings.  Lazy strings will not be evaluated until they are actually used.
 To use such a lazy string, use the :func:`lazy_gettext` function::
 
-    from flask.ext.babelex import lazy_gettext
+    from flask_babelex import lazy_gettext
 
     class MyForm(formlibrary.FormBase):
         success_message = lazy_gettext(u'The form was successfully saved.')
@@ -240,7 +240,7 @@ into "messages" domain.
 Flask-BabelEx allows extension developers to specify which translation domain to
 use::
 
-    from flask.ext.babelex import Domain
+    from flask_babelex import Domain
 
     mydomain = Domain(domain='myext')
 
@@ -254,7 +254,7 @@ they have to be located in ``translations`` directory under users Flask applicat
 If extension is distributed with the localizations, it is possible to specify
 their location::
 
-    from flask.ext.babelex import Domain
+    from flask_babelex import Domain
 
     from flask.ext.myext import translations
     mydomain = Domain(translations.__path__[0])
@@ -269,7 +269,7 @@ To set the :class:`Domain` that will be used in an app, pass it to
 :class:`Babel` on initialization::
 
     from flask import Flask
-    from flask.ext.babelex import Babel, Domain
+    from flask_babelex import Babel, Domain
 
     app = Flask(__name__)
     domain = Domain(domain='myext')
@@ -281,7 +281,7 @@ To change the default domain in a request context, call the
 :meth:`~Domain.as_default` method from within the request context::
 
     from flask import Flask
-    from flask.ext.babelex import Babel, Domain, gettext
+    from flask_babelex import Babel, Domain, gettext
 
     app = Flask(__name__)
     domain = Domain(domain='myext')
