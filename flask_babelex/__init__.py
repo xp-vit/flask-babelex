@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-    flask.ext.babelex
-    ~~~~~~~~~~~~~~~~~
+    flask_babelex
+    ~~~~~~~~~~~~~
 
     Implements i18n/l10n support for Flask applications based on Babel.
 
