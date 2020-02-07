@@ -20,7 +20,7 @@ from datetime import datetime
 from flask import _request_ctx_stack
 from babel import dates, numbers, support, Locale
 from babel.support import NullTranslations
-from werkzeug import ImmutableDict
+from werkzeug.datastructures import ImmutableDict
 try:
     from pytz.gae import pytz
 except ImportError:
